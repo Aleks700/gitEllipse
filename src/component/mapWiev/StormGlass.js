@@ -20,7 +20,7 @@ export default async function StormGlass(lat,lng,time){
             // sum = sum + weatherDate[paramsArray[j]][z];s
         }
         let object_length = Object.keys(weatherDate[paramsArray[j]]).length;
-        // console.log(sum+'это сумма');
+     
         // console.log(sum/object_length,'это деление суммы');
         // const value = sum/Object.keys(weatherDate[paramsArray[j]]).length;
         // console.log(value);
