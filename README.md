@@ -1,0 +1,2 @@
+# gitEllipse
+ellipseScript with git
