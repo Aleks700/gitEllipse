@@ -2,16 +2,21 @@ import React,{Fragment} from 'react';
 import  WebMapView from './component/mapWiev/MapView';
 import Header from './component/header/header';
 import StormGlass from './component/mapWiev/StormGlass';
+import OilsAlias from './component/mapWiev/OilsAlias';
 
 function App() {
 
   const WeatherDate = () =>{
-    let X = document.querySelector('#X').value;
-    let Y = document.querySelector('#Y').value;
-    let W=document.querySelector('#weight');
-    let startTime=new Date(document.querySelector('#startTime').value).toISOString();
-    console.log()
-    StormGlass(X,Y,startTime);
+    let Xcoord = document.querySelector('#X').value;
+    let Ycoord = document.querySelector('#Y').value;
+    let Weight = document.querySelector('#weight').value;
+    // let startTime = new Date(document.querySelector('#startTime').value); //рабочая функция
+    let startTime = document.querySelector('#startTime').value;
+    // startTime = startTime.toISOString();
+    console.log(startTime,'Старт тайм в App');
+    // StormGlass(Xcoord,Ycoord,startTime);
+    OilsAlias(Xcoord,Ycoord,startTime,Weight)
+
   }
 
 
