@@ -51,8 +51,9 @@ export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
         let At=(Math.pi*Rx*Ry)/4.0;		
         OilAliasIter.push(Ry);
         OilAliasIter.push(Rx);
-        			 					
-                                
+        OilAliasIter.push(gradus_veter);
+        
+        
         const t1=373;
         const t2=413; 
         const t3=453; 
@@ -101,14 +102,12 @@ export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
         // Xcoord = `${Xcoord}`;
         console.log(Xcoord,'Это X coord');
         console.log(typeof(Xcoord),'Это его тип');
-
-        
         OilAliasDate.push(OilAliasIter);
         console.log(OilAliasDate,'OilAliasDate');
         console.log(IsoFormate,'IsoFormate in the end');
         // IsoFormate = IsoFormate.setHours(IsoFormate.getHours()+1);
         IsoFormate = new Date(IsoFormate.setHours(IsoFormate.getHours()+1));
     }
-        console.log(OilAliasDate);
-        console.log('Это ваше значение');
+        console.log(OilAliasDate,'OilAliasDate для отрисовки');
+        return OilAliasDate;
 }
