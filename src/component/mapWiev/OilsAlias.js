@@ -1,21 +1,25 @@
 import StormGlass from './StormGlass';
 
+const meterLat = 0.000017884826245207995;
+const meterLon = 0.000017884826245207995;
+
+
 export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
     Math.radians = function(degrees) {
         return degrees * Math.PI / 180;
     };
     
-    console.log(emergencyTime,'Это эмергенси тайм в OilsAliass');
+    // console.log(emergencyTime,'Это эмергенси тайм в OilsAliass');
     // .toISOString();
     
-    console.log(emergencyTime,'Это эмергенси тайм после объекта в OilsAliass');
+    // console.log(emergencyTime,'Это эмергенси тайм после объекта в OilsAliass');
     let OilAliasDate = [];
     let plot_vod = 1003.0;
     let plot_neft = 832;
     let KelvinTemp = 273;
     // emergencyTime = new Date(emergencyTime).toISOString();
-    console.log(emergencyTime,'firstt try');
-    console.log(typeof(emergencyTime),'тип emergency Time');
+    // console.log(emergencyTime,'firstt try');
+    // console.log(typeof(emergencyTime),'тип emergency Time');
     // let IsoFormate = new Date(emergencyTime).toISOString(); Работает строка
     let IsoFormate = new Date(emergencyTime);
 
@@ -24,13 +28,13 @@ export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
         // let IsoTime = emergencyTime;
         let OilAliasIter = [];
         OilAliasIter.push(i);
-        OilAliasIter.push(Xcoord);
-        OilAliasIter.push(Ycoord);
+        OilAliasIter.push(+Xcoord);
+        OilAliasIter.push(+Ycoord);
         let time = 60*i;
-        console.log(i,'Итерация номер');
-        console.log(IsoFormate, 'Это исо формат в Oils Alias');
+        // console.log(i,'Итерация номер');
+        // console.log(IsoFormate, 'Это исо формат в Oils Alias');
         let WeatherDate = await StormGlass(Xcoord,Ycoord,IsoFormate.toISOString());
-        console.log(WeatherDate,'Weather Date'); //Вызов  fetch функции 
+        // console.log(WeatherDate,'Weather Date'); //Вызов  fetch функции 
        
 
         let scor_veter = WeatherDate.windSpeed;
@@ -39,7 +43,7 @@ export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
         let gradus_veter = WeatherDate.windDirection;
         let tmpVod = WeatherDate.waterTemperature + KelvinTemp;
         let tmpOkruzh = WeatherDate.airTemperature + KelvinTemp;
-        console.log(scor_tech,scor_veter,gradus_tech,gradus_veter,tmpVod)
+        // console.log(scor_tech,scor_veter,gradus_tech,gradus_veter,tmpVod)
     
 
 

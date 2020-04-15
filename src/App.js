@@ -1,8 +1,10 @@
 import React,{Fragment} from 'react';
 import  WebMapView from './component/mapWiev/MapView';
-import Header from './component/header/header';
-import StormGlass from './component/mapWiev/StormGlass';
+// import Header from './component/header/header';
+// import StormGlass from './component/mapWiev/StormGlass';
 import OilsAlias from './component/mapWiev/OilsAlias';
+
+
 
 function App() {
   const WeatherDate = () =>{
@@ -28,7 +30,7 @@ function App() {
   }
   return (
     <Fragment>
-      <Header></Header>
+      {/* <Header></Header> */}
       <WebMapView></WebMapView>
       <div style={divStyle}>
         <label>Введите дату аварии <input type="datetime-local" id="startTime" value="2020-04-01T10:30"></input></label>

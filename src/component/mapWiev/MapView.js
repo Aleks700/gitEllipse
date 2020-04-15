@@ -1,7 +1,8 @@
 import React from 'react';
 import { loadModules } from 'esri-loader';
 import calculateEllipse from './calculateEllipse';
-import './map.css'
+import './map.css';
+import OilsAlias from './OilsAlias';
 
 export default class WebMapView extends React.Component {
   constructor(props) {
@@ -98,7 +99,9 @@ export default class WebMapView extends React.Component {
       //   }
       // });
 
+      function WeatherDateToGraphics(){
 
+      }
       // this.view.graphics.add(pointGraphic1);
       // this.view.graphics.add(pointGraphic2);
       // this.view.graphics.add(lineGrafs);
@@ -110,10 +113,10 @@ export default class WebMapView extends React.Component {
       console.log(1/LongitudeToMeter+" long");
       console.log(1/LatitudeToMeter+" latit");
       
-      function oilEllipse(ArrayOfDate){
-        calculateEllipse()
+      // function oilEllipse(ArrayOfDate){
+      //   calculateEllipse()
 
-      }
+      // }
 
 
       const ellipse_paths=calculateEllipse(30.20416,59.93237,0.017884826245207995,0.00884826245207995,40,200);
@@ -162,9 +165,40 @@ export default class WebMapView extends React.Component {
     
 
       const clicka = document.querySelector('#clicker');    //нахождение кнопки в DOM дереве
-      clicka.addEventListener('click',()=>{                 //вещаем событие при нажатии кнопки
-        this.view.graphics.add(polygonGraphic);   
-        this.view.graphics.add(secondPoligon);   
+      clicka.addEventListener('click',()=>{     
+
+        let Xcoord = document.querySelector('#X').value;
+        let Ycoord = document.querySelector('#Y').value;
+        let Weight = document.querySelector('#weight').value;
+        let startTime = document.querySelector('#startTime').value;
+        OilsAlias(Xcoord,Ycoord,startTime,Weight).then((data)=>{
+          // console.log(data);
+          for(let i=0;i<data.length;i++){
+            let inputValue = data[i];
+            let ellipse_rings = calculateEllipse(inputValue[1],inputValue[2],inputValue[3],inputValue[4],inputValue[5]);
+            let OilPolygon = {
+              type: "polygon",
+              rings: ellipse_rings
+            };
+            const FillSymbolCss = {
+              type: "simple-fill",
+              color: [0, 255, 255, (1-i*0.1)],  // orange, opacity 80%
+              outline: {
+                color: [255, 255, 255],
+                width: 1
+              }
+            };
+            let OilsGraphic = new Graphic({                            
+              geometry: OilPolygon,
+              symbol: FillSymbolCss
+            });
+            this.view.graphics.add(OilsGraphic);   
+          }
+        });
+        
+                    //вещаем событие при нажатии кнопки
+        // this.view.graphics.add(polygonGraphic);   
+        // this.view.graphics.add(secondPoligon);   
       })
 
       const clear = document.querySelector('#clear');         //нахождение кнопки в DOM дереве
