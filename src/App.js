@@ -5,7 +5,6 @@ import StormGlass from './component/mapWiev/StormGlass';
 import OilsAlias from './component/mapWiev/OilsAlias';
 
 function App() {
-
   const WeatherDate = () =>{
     let Xcoord = document.querySelector('#X').value;
     let Ycoord = document.querySelector('#Y').value;

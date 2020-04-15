@@ -1,8 +1,5 @@
 import StormGlass from './StormGlass';
 
-
-
-
 export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
     Math.radians = function(degrees) {
         return degrees * Math.PI / 180;
@@ -10,26 +7,29 @@ export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
     
     console.log(emergencyTime,'Это эмергенси тайм в OilsAliass');
     // .toISOString();
-
+    
     console.log(emergencyTime,'Это эмергенси тайм после объекта в OilsAliass');
     let OilAliasDate = [];
     let plot_vod = 1003.0;
     let plot_neft = 832;
     let KelvinTemp = 273;
     // emergencyTime = new Date(emergencyTime).toISOString();
-    console.log(emergencyTime,'firstt try')
-    
-    const timeFromEmerginceInMinute = 60;
+    console.log(emergencyTime,'firstt try');
+    console.log(typeof(emergencyTime),'тип emergency Time');
+    // let IsoFormate = new Date(emergencyTime).toISOString(); Работает строка
+    let IsoFormate = new Date(emergencyTime);
+
+    // const timeFromEmerginceInMinute = 60;
     for (let i = 1; i<11; i++){
-        let IsoTime = emergencyTime
+        // let IsoTime = emergencyTime;
         let OilAliasIter = [];
         OilAliasIter.push(i);
         OilAliasIter.push(Xcoord);
         OilAliasIter.push(Ycoord);
         let time = 60*i;
-        let IsoFormate = new Date(emergencyTime).toISOString();
+        console.log(i,'Итерация номер');
         console.log(IsoFormate, 'Это исо формат в Oils Alias');
-        let WeatherDate = await StormGlass(Xcoord,Ycoord,IsoFormate);
+        let WeatherDate = await StormGlass(Xcoord,Ycoord,IsoFormate.toISOString());
         console.log(WeatherDate,'Weather Date'); //Вызов  fetch функции 
        
 
@@ -39,6 +39,7 @@ export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
         let gradus_veter = WeatherDate.windDirection;
         let tmpVod = WeatherDate.waterTemperature + KelvinTemp;
         let tmpOkruzh = WeatherDate.airTemperature + KelvinTemp;
+        console.log(scor_tech,scor_veter,gradus_tech,gradus_veter,tmpVod)
     
 
 
@@ -94,12 +95,19 @@ export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
         let R4=3e-6*molDolya4*S*At*3600*mol4;
         let Rs=R1+R2+R3+R4;						
         let Rsum=Rs/plot_neft;
-        OilWeigth=OilWeigth-Nsum-Rsum;
-        Xcoord=Xcoord+((Math.cos(gradus_veter)*scor_veter*0.03*time)/111120)+((Math.cos(gradus_tech)*scor_tech*1.0*time)/111120);
+        // OilWeigth=OilWeigth-Nsum-Rsum;
+        console.log(OilWeigth,`OilWeigth on the ${i}`);
+        Xcoord=+Xcoord+((Math.cos(gradus_veter)*scor_veter*0.03*time)/111120)+((Math.cos(gradus_tech)*scor_tech*1.0*time)/111120);
+        // Xcoord = `${Xcoord}`;
+        console.log(Xcoord,'Это X coord');
+        console.log(typeof(Xcoord),'Это его тип');
+
+        
         OilAliasDate.push(OilAliasIter);
-        console.log(OilAliasDate);
-        emergencyTime = emergencyTime.setHours(emergencyTime.getHours()+1);
-      
+        console.log(OilAliasDate,'OilAliasDate');
+        console.log(IsoFormate,'IsoFormate in the end');
+        // IsoFormate = IsoFormate.setHours(IsoFormate.getHours()+1);
+        IsoFormate = new Date(IsoFormate.setHours(IsoFormate.getHours()+1));
     }
         console.log(OilAliasDate);
         console.log('Это ваше значение');
