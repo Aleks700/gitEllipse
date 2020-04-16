@@ -36,7 +36,7 @@ function App() {
         <label>Введите дату аварии <input type="datetime-local" id="startTime" value="2020-04-01T10:30"></input></label>
         <input type="number" placeholder="Введите Y координату" id="Y" value={59.896297} ></input>
         <input type="number" placeholder="Введите X координату" id="X" value={30.179232}></input>
-        <input type="number" placeholder="Масса нефти в тоннах" id="weight" value={500}></input>
+        <input type="number" placeholder="Масса нефти в тоннах" id="weight" value={5000}></input>
         <button id="stormGlass" onClick={WeatherDate}>Запрос данных</button> 
         <button id="clicker">Отрисовать</button> 
         <button id="clear">Очистить</button> 

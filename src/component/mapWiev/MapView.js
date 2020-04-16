@@ -99,9 +99,7 @@ export default class WebMapView extends React.Component {
       //   }
       // });
 
-      function WeatherDateToGraphics(){
-
-      }
+     
       // this.view.graphics.add(pointGraphic1);
       // this.view.graphics.add(pointGraphic2);
       // this.view.graphics.add(lineGrafs);
@@ -119,19 +117,19 @@ export default class WebMapView extends React.Component {
       // }
 
 
-      const ellipse_paths=calculateEllipse(30.20416,59.93237,0.017884826245207995,0.00884826245207995,40,200);
-      const SecondEllipse_paths=calculateEllipse(30.21416,59.93237,0.017884826245207995,0.00884826245207995,40,200);
+      // const ellipse_paths=calculateEllipse(30.20416,59.93237,0.017884826245207995,0.00884826245207995,40,200);
+      // const SecondEllipse_paths=calculateEllipse(30.21416,59.93237,0.017884826245207995,0.00884826245207995,40,200);
 
 
-      //Draw ellipse with Grafics
-      const polygon = {
-        type: "polygon",
-        rings: ellipse_paths
-      };
-      const SecondPolygon = {
-        type: "polygon",
-        rings: SecondEllipse_paths
-      };
+      // //Draw ellipse with Grafics
+      // const polygon = {
+      //   type: "polygon",
+      //   rings: ellipse_paths
+      // };
+      // const SecondPolygon = {
+      //   type: "polygon",
+      //   rings: SecondEllipse_paths
+      // };
 
       const simpleFillSymbol = {
         type: "simple-fill",
@@ -152,15 +150,15 @@ export default class WebMapView extends React.Component {
 
    
 
-      const  polygonGraphic = new Graphic({                            
-        geometry: polygon,
-        symbol: simpleFillSymbol
-      });
+      // const  polygonGraphic = new Graphic({                            
+      //   geometry: polygon,
+      //   symbol: simpleFillSymbol
+      // });
 
-      const secondPoligon = new Graphic({                            
-        geometry: SecondPolygon,
-        symbol: SecondSimpleFillSymbol
-      });
+      // const secondPoligon = new Graphic({                            
+      //   geometry: SecondPolygon,
+      //   symbol: SecondSimpleFillSymbol
+      // });
 
     
 
@@ -182,9 +180,10 @@ export default class WebMapView extends React.Component {
             };
             const FillSymbolCss = {
               type: "simple-fill",
-              color: [0, 255, 255, (1-i*0.1)],  // orange, opacity 80%
+              color: [64, 38, 8, (1-i*0.1)],
+                // orange, opacity 80%
               outline: {
-                color: [255, 255, 255],
+                color: 'black',
                 width: 1
               }
             };
@@ -194,6 +193,8 @@ export default class WebMapView extends React.Component {
             });
             this.view.graphics.add(OilsGraphic);   
           }
+        }).catch((err)=>{
+          alert(err);
         });
         
                     //вещаем событие при нажатии кнопки

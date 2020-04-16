@@ -48,7 +48,7 @@ export default  async function OilAlias(Xcoord,Ycoord,emergencyTime,OilWeigth){
 
 
         // Ry=42.5*(0.17**(1.0/3.0))*(OilWeigth**(1.0/3.0))*(time**0.25);
-        let Ry=42.5*((plot_vod-plot_neft)/plot_vod**(1.0/3.0))*(OilWeigth**(1.0/3.0))*((time)**0.25);
+        let Ry=42.5*(((plot_vod-plot_neft)/plot_vod)**(1.0/3.0))*(OilWeigth**(1.0/3.0))*((time)**0.25);
         console.log(Ry,'Ry')	
         let Rx=Ry+0.15*(scor_veter**(4.0/3.0))*((time*60)**(3.0/4.0));
         console.log(Rx,'Rx')	

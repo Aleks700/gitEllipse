@@ -1,8 +1,12 @@
 export default async function StormGlass(lat,lng,time){
+  
+    const ApiKey = '241f85fc-7f74-11ea-9892-0242ac130002-241f86b0-7f74-11ea-9892-0242ac130002';
+
+
     const paramsArray = ['airTemperature','waterTemperature','windSpeed','windDirection','currentDirection','currentSpeed'];
     const newParams = {};
     const params = paramsArray.join();
-    const ApiKey = '59db50e2-7f72-11ea-a900-0242ac130002-59db5182-7f72-11ea-a900-0242ac130002'; //login ключ для доступа к даннымы
+     //login ключ для доступа к даннымы
     let response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lng}&lng=${lat}&params=${params}&start=${time}&end=${time}`, {
       headers: {
         'Authorization': ApiKey
